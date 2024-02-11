@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root">
+    </div>
+    <script type="text/babel">      
+        function App(){
+
+            const {useState, useEffect} = React;
+           
+            const [data, setData] = useState(null);
+            useEffect(() => 
+                fetch('http://api.open-notify.org/astros.json')
+                .then(response => response.json())
+                .then(json => json.people.map(
+                    (p,i) => {
+                        return { id:i, ...p } 
+                    }
+                ))
+                .then(peopleWithIds => {
+                    setData(peopleWithIds);
+                }), 
+                []);
+            
+                if (data) {
+                    return (
+                        <table border="1">
+                            <thead>
+                            <tr>
+                                <th>Craft</th>
+                                <th>Name</th>
+                            </tr>    
+                            </thead> 
+                            <tbody>           
+                            {
+                                data.map(p => (
+                                <tr key={p.id}>
+                                    <td>{p.craft}</td>
+                                    <td>{p.name}</td>
+                                </tr>
+                                ))
+                            }  
+                            </tbody>         
+                        </table>
+                    );
+                }
+
+            return <p>Loading data...</p>;
+        }            
+                
+        ReactDOM.render(
+            <App/>,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+</html>
