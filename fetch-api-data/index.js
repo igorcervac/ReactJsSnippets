@@ -7,9 +7,7 @@ function App(){
         fetch('http://api.open-notify.org/astros.json')
         .then(response => response.json())
         .then(json => json.people.map(
-            (p,i) => {
-                return { id:i, ...p } 
-            }
+            (p,i) => ({ id:i, ...p })
         ))
         .then(peopleWithIds => {
             setData(peopleWithIds);
