@@ -7,10 +7,13 @@ export function useFetch(uri){
     useEffect(() => {
         fetch(uri)
         .then(response => response.json())
+        .then(json => json.people.map(
+            (p,i) => ({ id:i, ...p })
+        ))
         .then(setData)
         .then(_=> setLoading(false))
         .catch(setError)
-    });
+    }, [uri]);
 
     if (!uri) return;
 
