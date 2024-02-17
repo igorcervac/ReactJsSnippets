@@ -21,7 +21,7 @@ export default function App(){
           </thead> 
           <tbody>           
           {
-              data.people.map(p => (
+              data.map(p => (
               <tr key={p.id}>
                   <td>{p.craft}</td>
                   <td>{p.name}</td>
@@ -31,10 +31,5 @@ export default function App(){
           </tbody>         
       </table>
   );
-  return <h1>Text</h1>;
-}            
-      
-// ReactDOM.render(
-//   <App/>,
-//   document.getElementById('root')
-// );
+}           
+ 
