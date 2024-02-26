@@ -13,11 +13,14 @@ export default function App(){
             </thead> 
             <tbody>           
             {
-                clubs.map(p => (
-                <tr key={p.id}>
-                    <td>{p.name}</td>
-                    <td>{p.country}</td>
-                    <td>{p.founded}</td>
+                clubs
+                .sort((a,b) => a.founded < b.founded ? -1 : 1)
+                .map((c,i) => ({id:i, ...c}))
+                .map(ci => (
+                <tr key={ci.id}>
+                    <td>{ci.name}</td>
+                    <td>{ci.country}</td>
+                    <td>{ci.founded}</td>
                 </tr>
                 ))
             }  

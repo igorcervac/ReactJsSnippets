@@ -1,5 +1,5 @@
 [
-    {"id":1,"name":"Liverpool", "country":"England","founded":1892},
-    {"id":2,"name":"Olympic Lyon", "country":"France","founded":1950},
-    {"id":3,"name":"Juventus", "country":"Italy","founded":1897}
+    {"name":"Liverpool", "country":"England","founded":1892},
+    {"name":"Olympic Lyon", "country":"France","founded":1950},
+    {"name":"Juventus", "country":"Italy","founded":1897}
 ]
